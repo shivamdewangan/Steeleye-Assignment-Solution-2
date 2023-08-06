@@ -1,10 +1,18 @@
-/**
- * Strips the prefix from the keys of the given key-value pairs
- * @param {string} htmlContent - HTML content which needs to be highlighted
- * @param {string} plainText - This plain text is extracted from htmlContent
- * @param {array} plainTextPositions - Array of Objects with start and end positions of words in plainText (Not the positions in HTML)
- * @returns {string} Using the positions in plainText, find the appropriate positions in htmlContent, highlight the content and return it
- */
+// Creating a demo use case to utilize the function
+const section = document.querySelector('section');
+section.innerHTML = highlightHTMLContent(section.innerHTML, section.innerText, [
+    {
+        start: 241,
+        end: 247,
+    },
+    {
+        start: 517,
+        end: 524,
+    },
+]);
+
+// Duplicate code from `./src/main.js`
+
 function highlightHTMLContent(htmlContent, plainText, plainTextPositions) {
     plainText = plainText.replace(/[\n\r]+|[\s]{2,}/g, ' ').replace(/  +/g, ' ').trim();
     for (let position of plainTextPositions) {
@@ -26,7 +34,3 @@ function getIndexOfWord(inputString, targetWord, start) {
 
     return index;
 }
-
-// export default highlightHTMLContent;
-
-module.exports = highlightHTMLContent;
